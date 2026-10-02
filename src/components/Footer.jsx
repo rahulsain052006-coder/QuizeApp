@@ -18,16 +18,10 @@ const Footer = () => {
 
   return (
     <footer className="relative overflow-hidden border-t border-yellow-400/20 bg-black text-white">
-      
-      {/* Background Glow */}
       <div className="pointer-events-none absolute left-1/2 top-0 h-64 w-64 -translate-x-1/2 rounded-full bg-yellow-400/10 blur-[120px]" />
 
       <div className="relative mx-auto max-w-7xl px-6 py-14 sm:px-8 lg:px-10">
-
-        {/* Main Footer */}
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
-
-          {/* Logo & About */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -40,11 +34,10 @@ const Footer = () => {
             </a>
 
             <p className="mt-4 max-w-sm text-sm leading-6 text-gray-400">
-              Challenge yourself, test your knowledge and become better
-              every day with QuizForge.
+              Challenge yourself, test your knowledge and become better every
+              day with QuizForge.
             </p>
 
-            {/* Social Icons */}
             <div className="mt-6 flex gap-3">
               {[
                 {
@@ -79,15 +72,12 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          {/* Explore */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}>
-            <h3 className="mb-5 text-lg font-bold text-yellow-400">
-              Explore
-            </h3>
+            <h3 className="mb-5 text-lg font-bold text-yellow-400">Explore</h3>
 
             <ul className="space-y-3 text-sm">
               {["Home", "All Quizzes", "Categories", "Popular Quizzes"].map(
@@ -99,12 +89,11 @@ const Footer = () => {
                       {item}
                     </a>
                   </li>
-                )
+                ),
               )}
             </ul>
           </motion.div>
 
-          {/* Categories */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -115,24 +104,20 @@ const Footer = () => {
             </h3>
 
             <ul className="space-y-3 text-sm">
-              {[
-                "Programming",
-                "General Knowledge",
-                "Science",
-                "Sports",
-              ].map((item) => (
-                <li key={item}>
-                  <a
-                    href="#"
-                    className="text-gray-400 transition-all duration-300 hover:translate-x-1 hover:text-yellow-400">
-                    {item}
-                  </a>
-                </li>
-              ))}
+              {["Programming", "General Knowledge", "Science", "Sports"].map(
+                (item) => (
+                  <li key={item}>
+                    <a
+                      href="#"
+                      className="text-gray-400 transition-all duration-300 hover:translate-x-1 hover:text-yellow-400">
+                      {item}
+                    </a>
+                  </li>
+                ),
+              )}
             </ul>
           </motion.div>
 
-          {/* Newsletter */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -150,7 +135,8 @@ const Footer = () => {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none transition placeholder:text-gray-500 focus:border-yellow-400"/>
+                className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none transition placeholder:text-gray-500 focus:border-yellow-400"
+              />
 
               <motion.button
                 whileHover={{ scale: 1.03 }}
@@ -162,10 +148,8 @@ const Footer = () => {
           </motion.div>
         </div>
 
-        {/* Divider */}
-        <div className="my-10 h-px bg-gradient-to-r from-transparent via-yellow-400/30 to-transparent" />
+        <div className="my-10 h-px bg-linear-to-r from-transparent via-yellow-400/30 to-transparent" />
 
-        {/* Bottom Footer */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -174,10 +158,8 @@ const Footer = () => {
           className="flex flex-col items-center justify-between gap-5 text-sm md:flex-row">
           <p className="text-gray-500">
             © {new Date().getFullYear()}{" "}
-            <span className="font-semibold text-yellow-400">
-              QuizForge
-            </span>
-            . All rights reserved.
+            <span className="font-semibold text-yellow-400">QuizForge</span>.
+            All rights reserved.
           </p>
 
           <div className="flex gap-6">
@@ -200,7 +182,6 @@ const Footer = () => {
             </a>
           </div>
 
-          {/* Scroll To Top */}
           <motion.button
             onClick={scrollToTop}
             whileHover={{ y: -4 }}

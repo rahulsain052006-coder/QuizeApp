@@ -7,8 +7,7 @@ const Button = ({
   onClick,
   type = "button",
   showArrow = true,
-  className = "",
-}) => {
+  className = "",}) => {
   return (
     <motion.button
       type={type}

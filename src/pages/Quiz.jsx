@@ -193,13 +193,10 @@ const Quiz = () => {
 
   const questions = quizQuestions[id] || quizQuestions[1];
 
-  // 🔥 Current question number
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
-  // 🔥 Selected answer
   const [selectedAnswer, setSelectedAnswer] = useState(null);
 
-  // 🔥 Score
   const [score, setScore] = useState(0);
 
   const question = questions[currentQuestion];
@@ -207,26 +204,21 @@ const Quiz = () => {
   const progress =
     ((currentQuestion + 1) / questions.length) * 100;
 
-  // ================= SELECT ANSWER =================
 
   const handleAnswer = (option) => {
     setSelectedAnswer(option);
   };
 
-  // ================= NEXT QUESTION =================
 
   const handleNext = () => {
-    // Answer select nahi kiya
     if (!selectedAnswer) return;
 
-    // Correct answer
     const isCorrect = selectedAnswer === question.answer;
 
     const newScore = isCorrect ? score + 1 : score;
 
     setScore(newScore);
 
-    // Last question
     if (currentQuestion === questions.length - 1) {
       navigate("/result", {
         state: {
@@ -239,14 +231,11 @@ const Quiz = () => {
       return;
     }
 
-    // 🔥 NEXT QUESTION
     setCurrentQuestion((prev) => prev + 1);
 
-    // Reset selected answer
     setSelectedAnswer(null);
   };
 
-  // ================= PREVIOUS =================
 
   const handlePrevious = () => {
     if (currentQuestion === 0) return;
@@ -255,23 +244,21 @@ const Quiz = () => {
     setSelectedAnswer(null);
   };
 
-  // ================= UI =================
 
   return (
     <div className="min-h-screen bg-black px-4 py-6 text-white sm:px-6 lg:px-8">
 
       <div className="mx-auto max-w-5xl">
 
-        {/* Back */}
+        
         <button
           onClick={() => navigate(`/quiz/${id}`)}
-          className="mb-8 flex items-center gap-2 text-sm text-gray-400 transition hover:text-yellow-400"
-        >
+          className="mb-8 flex items-center gap-2 text-sm text-gray-400 transition hover:text-yellow-400">
           <FiArrowLeft />
           Back to Quiz
         </button>
 
-        {/* Progress Header */}
+        
         <div className="mb-8">
 
           <div className="mb-3 flex items-center justify-between">
@@ -297,20 +284,17 @@ const Quiz = () => {
 
           </div>
 
-          {/* Progress Bar */}
+          
           <div className="h-2 overflow-hidden rounded-full bg-white/10">
 
             <motion.div
               animate={{ width: `${progress}%` }}
               transition={{ duration: 0.4 }}
-              className="h-full rounded-full bg-yellow-400"
-            />
-
+              className="h-full rounded-full bg-yellow-400"/>
           </div>
-
         </div>
 
-        {/* Question Card */}
+        
         <AnimatePresence mode="wait">
 
           <motion.div
@@ -318,22 +302,18 @@ const Quiz = () => {
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -40 }}
-            transition={{ duration: 0.35 }}
-          >
+            transition={{ duration: 0.35 }}>
 
-            <div className="rounded-3xl border border-yellow-400/20 bg-white/[0.03] p-6 sm:p-10">
-
-              {/* Question Number */}
+            <div className="rounded-3xl border border-yellow-400/20 bg-white/3 p-6 sm:p-10">
+              
               <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-yellow-400">
                 Question {currentQuestion + 1}
               </p>
-
-              {/* Question */}
+              
               <h1 className="text-2xl font-black leading-tight sm:text-3xl">
                 {question.question}
               </h1>
 
-              {/* Options */}
               <div className="mt-8 space-y-4">
 
                 {question.options.map((option, index) => {
@@ -352,27 +332,18 @@ const Quiz = () => {
                       className={`flex w-full items-center gap-4 rounded-2xl border p-4 text-left transition sm:p-5 ${
                         isSelected
                           ? "border-yellow-400 bg-yellow-400/10 text-white"
-                          : "border-white/10 bg-black/40 text-gray-300 hover:border-yellow-400/50"
-                      }`}
-                    >
-
-                      {/* Letter */}
+                          : "border-white/10 bg-black/40 text-gray-300 hover:border-yellow-400/50"}`}>
                       <span
                         className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border font-bold ${
                           isSelected
                             ? "border-yellow-400 bg-yellow-400 text-black"
-                            : "border-white/10 text-yellow-400"
-                        }`}
-                      >
+                            : "border-white/10 text-yellow-400"}`}>
                         {letter}
                       </span>
-
-                      {/* Answer */}
                       <span className="text-sm font-semibold sm:text-base">
                         {option}
                       </span>
-
-                      {/* Check */}
+                      
                       {isSelected && (
                         <FiCheckCircle className="ml-auto shrink-0 text-xl text-yellow-400" />
                       )}
@@ -389,42 +360,35 @@ const Quiz = () => {
 
         </AnimatePresence>
 
-        {/* Bottom Buttons */}
+        
         <div className="mt-6 flex items-center justify-between">
 
-          {/* Previous */}
+          
           <button
             onClick={handlePrevious}
             disabled={currentQuestion === 0}
             className={`flex items-center gap-2 rounded-xl border px-5 py-3 font-semibold transition ${
               currentQuestion === 0
                 ? "cursor-not-allowed border-white/5 text-gray-700"
-                : "border-white/10 text-gray-400 hover:border-yellow-400 hover:text-yellow-400"
-            }`}
-          >
+                : "border-white/10 text-gray-400 hover:border-yellow-400 hover:text-yellow-400"}`}>
             <FiArrowLeft />
             Previous
           </button>
 
-          {/* Next */}
           <button
             onClick={handleNext}
             disabled={!selectedAnswer}
             className={`flex items-center gap-2 rounded-xl px-6 py-3 font-bold transition ${
               selectedAnswer
                 ? "bg-yellow-400 text-black hover:bg-yellow-300"
-                : "cursor-not-allowed bg-yellow-400/20 text-yellow-400/40"
-            }`}
-          >
+                : "cursor-not-allowed bg-yellow-400/20 text-yellow-400/40"}`}>
             {currentQuestion === questions.length - 1
               ? "Finish"
               : "Next"}
 
             <FiArrowRight />
           </button>
-
         </div>
-
       </div>
     </div>
   );
